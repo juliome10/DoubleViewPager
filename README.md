@@ -1,4 +1,5 @@
 # DoubleViewPager
-Horizontal+Vertical ViewPager
+Horizontal + Vertical ViewPager
 
-This example has built with a horizontal view pager which has a vertical view pager. You can swype in X and Y.
+This example has been built with horizontal view pager which has vertical view pager on each child.
+Then, you can swype in X and Y.
