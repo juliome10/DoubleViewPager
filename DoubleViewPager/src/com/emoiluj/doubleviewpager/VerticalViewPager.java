@@ -28,7 +28,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.VelocityTrackerCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewConfigurationCompat;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.accessibility.AccessibilityEventCompat;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
@@ -49,52 +48,21 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-/**
- * Layout manager that allows the user to flip left and right
- * through pages of data.  You supply an implementation of a
- * {@link PagerAdapter} to generate the pages that the view shows.
- *
- * <p>Note this class is currently under early design and
- * development.  The API will likely change in later updates of
- * the compatibility library, requiring changes to the source code
- * of apps when they are compiled against the newer version.</p>
- *
- * <p>ViewPager is most often used in conjunction with {@link android.app.Fragment},
- * which is a convenient way to supply and manage the lifecycle of each page.
- * There are standard adapters implemented for using fragments with the ViewPager,
- * which cover the most common use cases.  These are
- * {@link android.support.v4.app.FragmentPagerAdapter} and 
- * {@link android.support.v4.app.FragmentStatePagerAdapter}; each of these
- * classes have simple code showing how to build a full user interface
- * with them.
- *
- * <p>For more information about how to use ViewPager, read <a
- * href="{@docRoot}training/implementing-navigation/lateral.html">Creating Swipe Views with
- * Tabs</a>.</p>
- *
- * <p>Below is a more complicated example of ViewPager, using it in conjunction
- * with {@link android.app.ActionBar} tabs.  You can find other examples of using
- * ViewPager in the API 4+ Support Demos and API 13+ Support Demos sample code.
- *
- * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
- *      complete}
- */
+
 public class VerticalViewPager extends ViewGroup {
-    
-	private ViewPager horizontalViewPager;
-	
-	private static final String TAG = "ViewPager";
+    	
+	private static final String TAG = "VVV";
     private static final boolean DEBUG = true;
 
     private static final boolean USE_CACHE = false;
 
     private static final int DEFAULT_OFFSCREEN_PAGES = 1;
-    private static final int MAX_SETTLE_DURATION = 600; // ms
-    private static final int MIN_DISTANCE_FOR_FLING = 25; // dips
+    private static final int MAX_SETTLE_DURATION = 600;
+    private static final int MIN_DISTANCE_FOR_FLING = 25;
 
-    private static final int DEFAULT_GUTTER_SIZE = 16; // dips
+    private static final int DEFAULT_GUTTER_SIZE = 16;
 
-    private static final int MIN_FLING_VELOCITY = 400; // dips
+    private static final int MIN_FLING_VELOCITY = 400;
 
     private static final int[] LAYOUT_ATTRS = new int[] {
         android.R.attr.layout_gravity
@@ -936,7 +904,7 @@ public class VerticalViewPager extends ViewGroup {
         // fling to a new position until we have finished the scroll to
         // that position, avoiding glitches from happening at that point.
         if (mPopulatePending) {
-//            if (DEBUG) Log.i(TAG, "populate is pending, skipping for now...");
+            if (DEBUG) Log.i(TAG, "populate is pending, skipping for now...");
             sortChildDrawingOrder();
             return;
         }
@@ -1004,8 +972,8 @@ public class VerticalViewPager extends ViewGroup {
                         mItems.remove(itemIndex);
                         mAdapter.destroyItem(this, pos, ii.object);
                         if (DEBUG) {
-//                            Log.i(TAG, "populate() - destroyItem() with pos: " + pos +
-//                                    " view: " + ((View) ii.object));
+                            Log.i(TAG, "populate() - destroyItem() with pos: " + pos +
+                                    " view: " + ((View) ii.object));
                         }
                         itemIndex--;
                         curIndex--;
@@ -1060,9 +1028,9 @@ public class VerticalViewPager extends ViewGroup {
         }
 
         if (DEBUG) {
-//            Log.i(TAG, "Current page list:");
+            Log.i(TAG, "Current page list:");
             for (int i=0; i<mItems.size(); i++) {
-//                Log.i(TAG, "#" + i + ": page " + mItems.get(i).position);
+                Log.i(TAG, "#" + i + ": page " + mItems.get(i).position);
             }
         }
 
@@ -1799,7 +1767,7 @@ public class VerticalViewPager extends ViewGroup {
 
         // Always take care of the touch gesture being complete.
         if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
-        	Log.i("VVV", "I - CANCEL - UP");
+        	if (DEBUG) Log.i(TAG, "I - CANCEL - UP");
             // Release the drag.
             if (DEBUG) Log.v(TAG, "Intercept done!");
             mIsBeingDragged = false;
@@ -1816,7 +1784,7 @@ public class VerticalViewPager extends ViewGroup {
         // Nothing more to do here if we have decided whether or not we
         // are dragging.
         if (action != MotionEvent.ACTION_DOWN) {
-        	Log.i("VVV", "I - DOWN");
+        	if (DEBUG) Log.i(TAG, "I - DOWN");
             if (mIsBeingDragged) {
                 if (DEBUG) Log.v(TAG, "Intercept returning true!");
                 return true;
@@ -1831,7 +1799,7 @@ public class VerticalViewPager extends ViewGroup {
         switch (action) {
             case MotionEvent.ACTION_MOVE: {
                 
-            	Log.i("VVV", "I - DOWN");
+            	if (DEBUG) Log.i(TAG, "I - DOWN");
             	/*
                  * mIsBeingDragged == false, otherwise the shortcut would have caught it. Check
                  * whether the user has moved far enough from his original down touch.
@@ -1900,7 +1868,7 @@ public class VerticalViewPager extends ViewGroup {
 
             case MotionEvent.ACTION_DOWN: {
                 
-            	Log.i("VVV", "I - DOWN2");
+            	if (DEBUG) Log.i(TAG, "I - DOWN2");
             	/*
                  * Remember location of down touch.
                  * ACTION_DOWN always refers to pointer index 0.
@@ -1932,7 +1900,7 @@ public class VerticalViewPager extends ViewGroup {
             }
 
             case MotionEventCompat.ACTION_POINTER_UP:
-            	Log.i("VVV", "I - POINTER UP");
+            	if (DEBUG) Log.i(TAG, "I - POINTER UP");
                 onSecondaryPointerUp(ev);
                 break;
         }
@@ -1990,7 +1958,7 @@ public class VerticalViewPager extends ViewGroup {
         switch (action & MotionEventCompat.ACTION_MASK) {
             
         	case MotionEvent.ACTION_DOWN: {
-        		Log.i("VVV", "T - DOWN");	
+        		if (DEBUG) Log.i(TAG, "T - DOWN");	
                 mScroller.abortAnimation();
                 mPopulatePending = false;
                 populate();
@@ -2003,7 +1971,7 @@ public class VerticalViewPager extends ViewGroup {
             }
         	
             case MotionEvent.ACTION_MOVE:
-            	Log.i("VVV", "T - MOVE");
+            	if (DEBUG) Log.i(TAG, "T - MOVE");
                 if (!mIsBeingDragged) {
                     final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
                     final float x = MotionEventCompat.getX(ev, pointerIndex);
@@ -2049,7 +2017,7 @@ public class VerticalViewPager extends ViewGroup {
                 break;
                 
             case MotionEvent.ACTION_UP:
-            	Log.i("VVV", "T - UP");
+            	if (DEBUG) Log.i(TAG, "T - UP");
             	if (mIsBeingDragged) {
                     final VelocityTracker velocityTracker = mVelocityTracker;
                     velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
@@ -2076,7 +2044,7 @@ public class VerticalViewPager extends ViewGroup {
                 break;
                 
             case MotionEvent.ACTION_CANCEL:
-            	Log.i("VVV", "T - CANCEL");
+            	if (DEBUG) Log.i(TAG, "T - CANCEL");
             	if (mIsBeingDragged) {
                     scrollToItem(mCurItem, true, 0, false);
                     mActivePointerId = INVALID_POINTER;
@@ -2087,7 +2055,7 @@ public class VerticalViewPager extends ViewGroup {
                 
                 
             case MotionEventCompat.ACTION_POINTER_DOWN: {
-            	Log.i("VVV", "T - POINTER DOWN");
+            	if (DEBUG) Log.i(TAG, "T - POINTER DOWN");
                 final int index = MotionEventCompat.getActionIndex(ev);
                 final float x = MotionEventCompat.getX(ev, index);
                 mLastMotionX = x;
@@ -2096,7 +2064,7 @@ public class VerticalViewPager extends ViewGroup {
             }
             
             case MotionEventCompat.ACTION_POINTER_UP:
-            	Log.i("VVV", "T - POINTER UP");
+            	if (DEBUG) Log.i(TAG, "T - POINTER UP");
             	onSecondaryPointerUp(ev);
                 mLastMotionX = MotionEventCompat.getX(ev,
                         MotionEventCompat.findPointerIndex(ev, mActivePointerId));

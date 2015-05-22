@@ -88,7 +88,8 @@ import android.widget.Scroller;
  *      complete}
  */
 public class HorizontalViewPager extends ViewGroup {
-    private static final String TAG = "ViewPager";
+	
+    private static final String TAG = "HHH";
     private static final boolean DEBUG = false;
 
     private static final boolean USE_CACHE = false;
@@ -1555,7 +1556,7 @@ public class HorizontalViewPager extends ViewGroup {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
     	
-    	Log.i("HHH", "I - Recibo ev");
+    	if (DEBUG) Log.i(TAG, "I - Recibo ev");
     	
     	
         /*
@@ -1568,7 +1569,7 @@ public class HorizontalViewPager extends ViewGroup {
 
         // Always take care of the touch gesture being complete.
         if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
-        	Log.i("HHH", "I - CANCEL - UP");
+        	if (DEBUG) Log.i(TAG, "I - CANCEL - UP");
         	// Release the drag.
             if (DEBUG) Log.v(TAG, "Intercept done!");
             mIsBeingDragged = false;
@@ -1584,7 +1585,7 @@ public class HorizontalViewPager extends ViewGroup {
         // Nothing more to do here if we have decided whether or not we
         // are dragging.
         if (action != MotionEvent.ACTION_DOWN) {
-        	Log.i("HHH", "I - DOWN");
+        	if (DEBUG) Log.i(TAG, "I - DOWN");
             if (mIsBeingDragged) {
                 if (DEBUG) Log.v(TAG, "Intercept returning true!");
                 return true;
@@ -1597,7 +1598,7 @@ public class HorizontalViewPager extends ViewGroup {
 
         switch (action) {
             case MotionEvent.ACTION_MOVE: {
-            	Log.i("HHH", "I - MOVE");
+            	if (DEBUG) Log.i(TAG, "I - MOVE");
                 /*
                  * mIsBeingDragged == false, otherwise the shortcut would have caught it. Check
                  * whether the user has moved far enough from his original down touch.
@@ -1656,7 +1657,7 @@ public class HorizontalViewPager extends ViewGroup {
             }
 
             case MotionEvent.ACTION_DOWN: {
-            	Log.i("HHH", "I - DOWN2");
+            	if (DEBUG) Log.i(TAG, "I - DOWN2");
             	
             	/*
                  * Remember location of down touch.
@@ -1688,7 +1689,7 @@ public class HorizontalViewPager extends ViewGroup {
             }
 
             case MotionEventCompat.ACTION_POINTER_UP:
-            	Log.i("VVV", "I - ACTION POINTER UP");
+            	if (DEBUG) Log.i(TAG, "I - ACTION POINTER UP");
                 onSecondaryPointerUp(ev);
                 break;
         }
@@ -1712,7 +1713,7 @@ public class HorizontalViewPager extends ViewGroup {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
     	
-    	Log.i("HHH", "Recibo ev");
+    	if (DEBUG) Log.i(TAG, "Recibo ev");
     	
         if (mFakeDragging) {
             // A fake drag is in progress already, ignore this real one
@@ -1743,7 +1744,7 @@ public class HorizontalViewPager extends ViewGroup {
         switch (action & MotionEventCompat.ACTION_MASK) {
             
         	case MotionEvent.ACTION_DOWN: {
-        		Log.i("HHH", "T - DOWN");
+        		if (DEBUG) Log.i(TAG, "T - DOWN");
                 mScroller.abortAnimation();
                 mPopulatePending = false;
                 populate();
@@ -1757,19 +1758,19 @@ public class HorizontalViewPager extends ViewGroup {
             } 
         	
             case MotionEvent.ACTION_MOVE:
-            	Log.i("HHH", "T - MOVE");
+            	if (DEBUG) Log.i(TAG, "T - MOVE");
                 if (!mIsBeingDragged) {
                     
-                	Log.i("HHH", "mActivePointerId: " + mActivePointerId);
+                	if (DEBUG) Log.i(TAG, "mActivePointerId: " + mActivePointerId);
                 	
                 	final int pointerIndex = MotionEventCompat.findPointerIndex(ev, mActivePointerId);
-                    Log.i("HHH", "pointerIndex: " + pointerIndex);
+                	if (DEBUG) Log.i(TAG, "pointerIndex: " + pointerIndex);
                     
                     
                     final float x = MotionEventCompat.getX(ev, pointerIndex);
                     
-                    Log.i("HHH", "X: " + x);
-                    Log.i("HHH", "mLastMotionX: " + mLastMotionX);
+                    if (DEBUG) Log.i(TAG, "X: " + x);
+                    if (DEBUG) Log.i(TAG, "mLastMotionX: " + mLastMotionX);
                     
                     final float xDiff = Math.abs(x - mLastMotionX);
                     final float y = MotionEventCompat.getY(ev, pointerIndex);
@@ -1795,7 +1796,7 @@ public class HorizontalViewPager extends ViewGroup {
                 break;
                 
             case MotionEvent.ACTION_UP:
-            	Log.i("HHH", "T - ACTION UP");
+            	if (DEBUG) Log.i(TAG, "T - ACTION UP");
                 if (mIsBeingDragged) {
                     final VelocityTracker velocityTracker = mVelocityTracker;
                     velocityTracker.computeCurrentVelocity(1000, mMaximumVelocity);
@@ -1822,7 +1823,7 @@ public class HorizontalViewPager extends ViewGroup {
                 break;
                 
             case MotionEvent.ACTION_CANCEL:
-            	Log.i("HHH", "T - CANCEL");
+            	if (DEBUG) Log.i(TAG, "T - CANCEL");
                 if (mIsBeingDragged) {
                     setCurrentItemInternal(mCurItem, true, true);
                     mActivePointerId = INVALID_POINTER;
@@ -1832,7 +1833,7 @@ public class HorizontalViewPager extends ViewGroup {
                 break;
                 
             case MotionEventCompat.ACTION_POINTER_DOWN: {
-            	Log.i("HHH", "T - ACTION POINTER DOWN");
+            	if (DEBUG) Log.i(TAG, "T - ACTION POINTER DOWN");
                 final int index = MotionEventCompat.getActionIndex(ev);
                 final float x = MotionEventCompat.getX(ev, index);
                 mLastMotionX = x;
@@ -1841,7 +1842,7 @@ public class HorizontalViewPager extends ViewGroup {
             }
             
             case MotionEventCompat.ACTION_POINTER_UP:
-            	Log.i("HHH", "T - ACTION POINTER UP");
+            	if (DEBUG) Log.i(TAG, "T - ACTION POINTER UP");
                 onSecondaryPointerUp(ev);
                 mLastMotionX = MotionEventCompat.getX(ev,
                         MotionEventCompat.findPointerIndex(ev, mActivePointerId));
