@@ -87,7 +87,7 @@ import android.widget.Scroller;
  * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
  *      complete}
  */
-public class ExtendedHorizontalViewPager extends ViewGroup {
+public class HorizontalViewPager extends ViewGroup {
     private static final String TAG = "ViewPager";
     private static final boolean DEBUG = false;
 
@@ -300,12 +300,12 @@ public class ExtendedHorizontalViewPager extends ViewGroup {
      */
     interface Decor {}
 
-    public ExtendedHorizontalViewPager(Context context) {
+    public HorizontalViewPager(Context context) {
         super(context);
         initViewPager();
     }
 
-    public ExtendedHorizontalViewPager(Context context, AttributeSet attrs) {
+    public HorizontalViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         initViewPager();
     }

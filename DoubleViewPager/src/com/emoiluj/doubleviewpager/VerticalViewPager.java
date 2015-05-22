@@ -79,7 +79,7 @@ import android.widget.Scroller;
  * {@sample development/samples/Support13Demos/src/com/example/android/supportv13/app/ActionBarTabsPager.java
  *      complete}
  */
-public class ExtendedVerticalViewPager extends ViewGroup {
+public class VerticalViewPager extends ViewGroup {
     
 	private ViewPager horizontalViewPager;
 	
@@ -278,9 +278,9 @@ public class ExtendedVerticalViewPager extends ViewGroup {
          * or when it is fully stopped/idle.
          *
          * @param state The new scroll state.
-         * @see ExtendedVerticalViewPager#SCROLL_STATE_IDLE
-         * @see ExtendedVerticalViewPager#SCROLL_STATE_DRAGGING
-         * @see ExtendedVerticalViewPager#SCROLL_STATE_SETTLING
+         * @see VerticalViewPager#SCROLL_STATE_IDLE
+         * @see VerticalViewPager#SCROLL_STATE_DRAGGING
+         * @see VerticalViewPager#SCROLL_STATE_SETTLING
          */
         public void onPageScrollStateChanged(int state);
     }
@@ -341,13 +341,13 @@ public class ExtendedVerticalViewPager extends ViewGroup {
      */
     interface Decor {}
 
-    public ExtendedVerticalViewPager(Context context) {
+    public VerticalViewPager(Context context) {
         super(context);
         initViewPager();
         init();
     }
 
-    public ExtendedVerticalViewPager(Context context, AttributeSet attrs) {
+    public VerticalViewPager(Context context, AttributeSet attrs) {
         super(context, attrs);
         initViewPager();
         init();
@@ -1876,8 +1876,8 @@ public class ExtendedVerticalViewPager extends ViewGroup {
                     setScrollingCacheEnabled(true);
                 
                 } else if (yDiff > mTouchSlop && yDiff * 0.5 > xDiff) {
-                	if(getParent().getParent() instanceof ExtendedHorizontalViewPager){
-                		ExtendedHorizontalViewPager parent = ((ExtendedHorizontalViewPager) getParent().getParent()); 
+                	if(getParent() instanceof HorizontalViewPager){
+                		HorizontalViewPager parent = (HorizontalViewPager) getParent(); 
                 		parent.setmActivePointerId(mActivePointerId);
                 		ev.setLocation(oldEv.y, oldEv.x);
                 		parent.onTouchEvent(ev);
@@ -2029,8 +2029,8 @@ public class ExtendedVerticalViewPager extends ViewGroup {
                         }
                         
                     }else if (yDiff > mTouchSlop && yDiff > xDiff){
-                    	if(getParent().getParent() instanceof ExtendedHorizontalViewPager){
-                    		ExtendedHorizontalViewPager parent = ((ExtendedHorizontalViewPager) getParent().getParent()); 
+                    	if(getParent() instanceof HorizontalViewPager){
+                    		HorizontalViewPager parent = (HorizontalViewPager) getParent(); 
                     		parent.setmActivePointerId(mActivePointerId);
                     		ev.setLocation(y, x);
                     		parent.onTouchEvent(ev);
@@ -2834,7 +2834,7 @@ public class ExtendedVerticalViewPager extends ViewGroup {
         @Override
         public void onInitializeAccessibilityEvent(View host, AccessibilityEvent event) {
             super.onInitializeAccessibilityEvent(host, event);
-            event.setClassName(ExtendedVerticalViewPager.class.getName());
+            event.setClassName(VerticalViewPager.class.getName());
             final AccessibilityRecordCompat recordCompat = AccessibilityRecordCompat.obtain();
             recordCompat.setScrollable(canScroll());
             if (event.getEventType() == AccessibilityEventCompat.TYPE_VIEW_SCROLLED
@@ -2848,7 +2848,7 @@ public class ExtendedVerticalViewPager extends ViewGroup {
         @Override
         public void onInitializeAccessibilityNodeInfo(View host, AccessibilityNodeInfoCompat info) {
             super.onInitializeAccessibilityNodeInfo(host, info);
-            info.setClassName(ExtendedVerticalViewPager.class.getName());
+            info.setClassName(VerticalViewPager.class.getName());
             info.setScrollable(canScroll());
             if (canScrollHorizontally(1)) {
                 info.addAction(AccessibilityNodeInfoCompat.ACTION_SCROLL_FORWARD);
