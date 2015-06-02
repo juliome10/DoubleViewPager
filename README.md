@@ -10,5 +10,7 @@ You can see an example on <a href="https://github.com/juliome10/DoubleViewPagerS
   <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DoubleViewPager-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1863)
+
 ## Example of use.
 <img src="DoubleViewPager/descriptionImages/description.gif">
