@@ -1,6 +1,8 @@
 # DoubleViewPager
 Horizontal + Vertical ViewPager
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DoubleViewPager-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1863)
+
 This example has been built with horizontal view pager which has vertical view pager on each child.
 Then, you can swype in X and Y.
 
@@ -9,8 +11,6 @@ You can see an example on <a href="https://github.com/juliome10/DoubleViewPagerS
 <a href="https://play.google.com/store/apps/details?id=com.emoiluj.doubleviewpagersample">
   <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
-
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-DoubleViewPager-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1863)
 
 ## Example of use.
 <img src="DoubleViewPager/descriptionImages/description.gif">
