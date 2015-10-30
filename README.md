@@ -13,4 +13,4 @@ You can see an example on <a href="https://github.com/juliome10/DoubleViewPagerS
 </a>
 
 ## Example of use.
-<img src="DoubleViewPager/descriptionImages/description.gif">
+<img src="images/description.gif">
