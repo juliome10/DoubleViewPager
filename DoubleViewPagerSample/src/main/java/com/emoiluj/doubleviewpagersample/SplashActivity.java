@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.InputType;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -16,12 +17,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class SplashActivity extends Activity{
+public class SplashActivity extends Activity implements View.OnKeyListener{
 
     private TextView title;
     private LinearLayout line;
     private ImageView logo;
     private LinearLayout data;
+    private EditText etHorizontal;
+    private EditText etVertical;
     private Button button;
 
     @Override
@@ -57,27 +60,39 @@ public class SplashActivity extends Activity{
         ((TextView) findViewById(R.id.splash_data_horizontal_childs_tv)).setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf"));
         ((TextView) findViewById(R.id.splash_data_vertical_childs_tv)).setTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf"));
 
-        final EditText horizontal = (EditText) findViewById(R.id.splash_data_horizontal_childs_et);
-        final EditText vertical = (EditText) findViewById(R.id.splash_data_vertical_childs_et);
-        horizontal.setInputType(InputType.TYPE_CLASS_NUMBER);
-        vertical.setInputType(InputType.TYPE_CLASS_NUMBER);
+        etHorizontal = (EditText) findViewById(R.id.splash_data_horizontal_childs_et);
+        etVertical = (EditText) findViewById(R.id.splash_data_vertical_childs_et);
+        etHorizontal.setInputType(InputType.TYPE_CLASS_NUMBER);
+        etVertical.setInputType(InputType.TYPE_CLASS_NUMBER);
+        etVertical.setOnKeyListener(this);
 
         button.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                if(horizontal.getText().toString().length() > 0 && vertical.getText().toString().length() > 0){
-                    Intent intent = new Intent(getApplicationContext(), com.emoiluj.doubleviewpagersample.MainActivity.class);
-                    intent.putExtra("HORIZONTAL", Integer.valueOf(horizontal.getText().toString()));
-                    intent.putExtra("VERTICAL", Integer.valueOf(vertical.getText().toString()));
-                    startActivity(intent);
-                    finish();
-                }else{
-                    Toast.makeText(getApplicationContext(), "Boxes can not be empty!", Toast.LENGTH_SHORT).show();
-                }
+                goToMain();
             }
         });
 
+    }
+
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+        if (v.getId() == R.id.splash_data_vertical_childs_et && event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+            goToMain();
+        }
+        return false;
+    }
+
+    private void goToMain(){
+        if (etHorizontal.getText().toString().length() > 0 && etVertical.getText().toString().length() > 0) {
+            Intent intent = new Intent(getApplicationContext(), com.emoiluj.doubleviewpagersample.MainActivity.class);
+            intent.putExtra("HORIZONTAL", Integer.valueOf(etHorizontal.getText().toString()));
+            intent.putExtra("VERTICAL", Integer.valueOf(etVertical.getText().toString()));
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(getApplicationContext(), "Boxes can not be empty!", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
