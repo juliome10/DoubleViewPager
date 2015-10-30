@@ -5,7 +5,7 @@ android {
     buildToolsVersion "22.0.1"
 
     defaultConfig {
-        applicationId "com.emoiluj.doubleviewpager"
+        applicationId "com.emoiluj.doubleviewpagersample"
         minSdkVersion 8
         targetSdkVersion 21
         versionCode 1
