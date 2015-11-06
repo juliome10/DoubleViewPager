@@ -1,1 +1,4 @@
 include ':DoubleViewPagerSample', ':DoubleViewPager'
+//TO UPLOAD TO BINTRAY.
+// ONLY LIBRARY
+//include ':DoubleViewPager'

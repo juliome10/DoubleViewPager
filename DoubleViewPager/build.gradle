@@ -1,8 +1,16 @@
 apply plugin: 'com.android.library'
+//TO UPLOAD TO BINTRAY
+//apply plugin: 'com.jfrog.bintray'
+//apply plugin: 'com.github.dcendents.android-maven'
+
+// TO UPLOAD TO BINTRAY
+//group = "com.github.juliome10"
+//version = "1.0.1"
 
 android {
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
+    resourcePrefix "doubleviewpager__" //TO GENERATE AAR STEP1
 
     defaultConfig {
         minSdkVersion 8
@@ -18,7 +26,95 @@ android {
     }
 }
 
+//TO UPLOAD TO BINTRAY
+//def siteUrl = 'https://github.com/juliome10/DoubleViewPager'            // Homepage URL of the library
+//def issueUrl = 'https://github.com/juliome10/DoubleViewPager/issues'    // URL for issues
+//def gitUrl = 'https://github.com/juliome10/DoubleViewPager.git'         // Git repository URL
+//
+//
+//install {
+//    repositories.mavenInstaller {
+//        // This generates POM.xml with proper parameters
+//        pom {
+//            project {
+//                packaging 'aar'
+//
+//                // Add your description here
+//                name 'DoubleViewPager'
+//                url siteUrl
+//
+//                // Set your license
+//                licenses {
+//                    license {
+//                        name 'The Apache Software License, Version 2.0'
+//                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+//                    }
+//                }
+//                developers {
+//                    developer {
+//                        id 'juliome10'
+//                        name 'Julio Gómez'
+//                        email 'juliogomezreis@gmail.com'
+//                    }
+//                }
+//                scm {
+//                    connection gitUrl
+//                    developerConnection gitUrl
+//                    url siteUrl
+//
+//                }
+//            }
+//        }
+//    }
+//}
+//
+//Properties properties = new Properties()
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//
+//bintray {
+//    user = properties.getProperty("bintray.user")
+//    key = properties.getProperty("bintray.apikey")
+//
+//    configurations = ['archives']
+//    pkg {
+//        repo = "maven"
+//        name = "DoubleViewPager"
+//        websiteUrl = siteUrl
+//        issueTrackerUrl = issueUrl
+//        vcsUrl = gitUrl
+//        licenses = ["Apache-2.0"]
+//        publish = true
+//        labels = []
+//        publicDownloadNumbers = true
+//    }
+//}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.android.support:support-v4:22.+'
+    compile fileTree(include: '*.jar', dir: 'libs')
 }
+
+//TO UPLOAD TO BINTRAY
+//task sourcesJar(type: Jar) {
+//    from android.sourceSets.main.java.srcDirs
+//    classifier = 'sources'
+//}
+//
+//task javadoc(type: Javadoc) {
+//    classpath = configurations.compile
+//    source = android.sourceSets.main.java.srcDirs
+//    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+//}
+//
+//task javadocJar(type: Jar, dependsOn: javadoc) {
+//    classifier = 'javadoc'
+//    from javadoc.destinationDir
+//}
+//artifacts {
+//    archives javadocJar
+//    archives sourcesJar
+//}
+//
+//task findConventions << {
+//    println project.getConvention()
+//}
