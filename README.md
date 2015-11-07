@@ -25,11 +25,12 @@ dependencies {
 ```
 
 ## Samples.
-You can see a sample project for Eclipse ADT on <a href="https://github.com/juliome10/DoubleViewPagerSample">Eclipse Sample</a>
+ - You can see a sample project for Eclipse ADT on <a href="https://github.com/juliome10/DoubleViewPagerSample">Eclipse Sample</a>
 
-There's another sample project for Android Studio on <a href="https://github.com/juliome10/DoubleViewPager/tree/master/DoubleViewPagerSample">Android Studio Sample</a>
+ - There's another sample project for Android Studio on <a href="https://github.com/juliome10/DoubleViewPager/tree/master/DoubleViewPagerSample">Android Studio Sample</a>
 
-You can test it downloading a sample app on play store.
+ - You can test it downloading a sample app on play store.
+
 <a href="https://play.google.com/store/apps/details?id=com.emoiluj.doubleviewpagersample">
   <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
 </a>
