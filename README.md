@@ -12,7 +12,7 @@ Then, you can swype in X and Y.
 You can download it and add it at your project as library.
 
 If you use gradle, you can easily include the library by specifying it as a dependency.
-`
+```
 repositories {
     jcenter()
 }
@@ -20,7 +20,7 @@ repositories {
 dependencies {
     compile 'com.github.juliome10:DoubleViewPager:1.0.1@aar'
 }
-`
+```
 
 ## Samples.
 You can see a sample project for Eclipse ADT on <a href="https://github.com/juliome10/DoubleViewPagerSample">Eclipse Sample</a>
