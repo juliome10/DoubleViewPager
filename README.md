@@ -5,7 +5,8 @@ Horizontal + Vertical ViewPager
 
 ## How it works
 This library has been built with horizontal view pager which has vertical view pager on each child.
-When the user triggers events on each child, they pass it to the parent. Then, if the event is vertical, the child processes it, otherwise, if the event is horizontal, the parent processes it
+When the user triggers events on each child, they pass it to the parent. Then, if the event is vertical, the child processes it, otherwise, if the event is horizontal, the parent processes it.
+
 Then, you can swype in X and Y.
 
 
