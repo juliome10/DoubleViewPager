@@ -41,5 +41,6 @@ For example, a DoubleViewPager with 4 horizontal x 4 vertical
 <img src="images/description.gif">
 
 This is the structure.
-<img src="images/desc.png">
+
+<img src="images/desc.png" width="400" height="600">
 
