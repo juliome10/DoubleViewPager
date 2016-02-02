@@ -31,7 +31,7 @@ dependencies {
 
  - You can test it downloading a sample app on play store.
 
-[![Google Play Store](images/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.emoiluj.doubleviewpagersample =250x)
+[![Google Play Store](images/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.emoiluj.doubleviewpagersample =125x)
 
 ## Screenshots
 For example, a DoubleViewPager with 4 horizontal x 4 vertical
