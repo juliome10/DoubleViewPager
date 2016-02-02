@@ -31,9 +31,7 @@ dependencies {
 
  - You can test it downloading a sample app on play store.
 
-<a href="https://play.google.com/store/apps/details?id=com.emoiluj.doubleviewpagersample">
-  <img alt="Android app on Google Play" src="https://developer.android.com/images/brand/en_app_rgb_wo_45.png" />
-</a>
+[![Google Play Store](images/google-play-badge.png)](https://play.google.com/store/apps/details?id=com.emoiluj.doubleviewpagersample)
 
 ## Screenshots
 For example, a DoubleViewPager with 4 horizontal x 4 vertical
