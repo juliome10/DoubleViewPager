@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.juliome10:DoubleViewPager:1.0.1@aar'
+    compile 'com.github.juliome10:DoubleViewPager:1.0.4@aar'
 }
 ```
 
